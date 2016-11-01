@@ -6,6 +6,11 @@
 	version="3.0">
 
 	<display-name>bugtracker-web</display-name>
+	
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
 
 	<!-- Ajuda no REFRESH das paginas durante o desenvolvimento -->
 	<context-param>
