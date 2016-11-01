@@ -16,7 +16,7 @@
 			</ul>
 		</div>
 		
-		<h:messages errorClass="errors" infoClass="success" />
+		<h:messages id="mensagens" errorClass="errors" infoClass="success" />
 		
 		<div id="conteudo">
 			<div id="container">
@@ -53,7 +53,7 @@
 							immediate="true" />
 						&#160;
 						<h:commandButton value="Salvar" action="#{usuarioBean.salva}">
-							<f:ajax render="@form" execute="@form" />
+							<f:ajax render="@form :mensagens" execute="@form" />
 						</h:commandButton>
 					</div>
 					
@@ -77,7 +77,7 @@
 							<f:facet name="header">Ações</f:facet>
 							<h:commandLink value="remover" action="#{usuarioBean.remove(usuario)}" 
 								immediate="true">
-								<f:ajax render="@form" />
+								<f:ajax render="@form :mensagens" />
 							</h:commandLink>
 							&#160;
 							<h:commandLink value="alterar" immediate="true" action="usuarios.xhtml">
