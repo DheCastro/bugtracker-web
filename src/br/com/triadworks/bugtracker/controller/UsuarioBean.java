@@ -34,6 +34,10 @@ public class UsuarioBean {
 		dao.remove(usuario);
 	}
 	
+	public void cancela() {
+		this.usuario = new Usuario();
+	}
+	
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
