@@ -1,5 +1,7 @@
 package br.com.triadworks.bugtracker.controller;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
@@ -14,6 +16,16 @@ public class UsuarioBean {
 		UsuarioDao dao = new UsuarioDao();
 		dao.adiciona(this.usuario);
 		this.usuario = new Usuario(); // limpa os campos
+	}
+	
+	public List<Usuario> getUsuarios() {
+		UsuarioDao dao = new UsuarioDao();
+		return dao.lista();
+	}
+	
+	public void remove(Usuario usuario) {
+		UsuarioDao dao = new UsuarioDao();
+		dao.remove(usuario);
 	}
 	
 	public Usuario getUsuario() {
