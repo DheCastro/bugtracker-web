@@ -5,60 +5,79 @@
 
     <h:head>
         <title>Bug Tracker</title>
+        <h:outputStylesheet library="css" name="app.css" />
     </h:head>
     <h:body>
-		<h:form>
-			<h1>
-				<h:outputText value="Novo Usuário" 
-					rendered="#{empty usuarioBean.usuario.id}" />
-
-				<h:outputText value="Editar Usuário" 
-					rendered="#{not empty usuarioBean.usuario.id}" />
-			</h1>
+    		<div id="cabecalho">
+			<ul id="menu-principal">
+				<li>
+					<h:link value="Usuários" outcome="/pages/usuarios.xhtml" />
+				</li>
+			</ul>
+		</div>
+		<div id="conteudo">
+			<div id="container">
+				<h:form>
+					<h1>
+						<h:outputText value="Novo Usuário" 
+							rendered="#{empty usuarioBean.usuario.id}" />
 		
-			<h:inputHidden value="#{usuarioBean.usuario.id}" />
+						<h:outputText value="Editar Usuário" 
+							rendered="#{not empty usuarioBean.usuario.id}" />
+					</h1>
+				
+					<h:inputHidden value="#{usuarioBean.usuario.id}" />
+				
+					<h:outputLabel value="Nome" for="nome" />
+					<h:inputText id="nome" value="#{usuarioBean.usuario.nome}" 
+						styleClass="texto-longo" />
 		
-			<h:panelGrid columns="2">
-				
-				<h:outputLabel value="Nome" for="nome" />
-				<h:inputText id="nome" value="#{usuarioBean.usuario.nome}" />
+					<h:outputLabel value="Login" for="login" />
+					<h:inputText id="login" value="#{usuarioBean.usuario.login}" />
+		
+					<h:outputLabel value="Senha" for="senha" />
+					<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" />
 	
-				<h:outputLabel value="Login" for="login" />
-				<h:inputText id="login" value="#{usuarioBean.usuario.login}" />
-	
-				<h:outputLabel value="Senha" for="senha" />
-				<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" />
-
-				<h:commandButton value="Salvar" action="#{usuarioBean.salva}" />
-				<h:commandLink value="Cancelar" action="#{usuarioBean.cancela}" />
-				
-			</h:panelGrid>
-			
-			<h:dataTable
-				value="#{usuarioBean.usuarios}" var="usuario">
-				<h:column>
-					<f:facet name="header">ID</f:facet>
-					#{usuario.id}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					#{usuario.nome}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Login</f:facet>
-					#{usuario.login}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Ações</f:facet>
-					<h:commandLink value="remover" action="#{usuarioBean.remove(usuario)}"/>
-					&#160;
-					<h:commandLink value="alterar">
-						<f:setPropertyActionListener value="#{usuario}" 
-								target="#{usuarioBean.usuario}" />
-					</h:commandLink>
-				</h:column>
-			</h:dataTable>
-		</h:form>
+					<div class="acoes-principais">
+						<h:commandLink value="Cancelar" action="#{usuarioBean.cancela}" />
+						&#160;
+						<h:commandButton value="Salvar" action="#{usuarioBean.salva}" />
+					</div>
+					
+					<h:dataTable
+						value="#{usuarioBean.usuarios}" var="usuario"
+						styleClass="dados" rowClasses="impar, par">
+						<h:column>
+							<f:facet name="header">ID</f:facet>
+							#{usuario.id}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							#{usuario.nome}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Login</f:facet>
+							#{usuario.login}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Ações</f:facet>
+							<h:commandLink value="remover" action="#{usuarioBean.remove(usuario)}"/>
+							&#160;
+							<h:commandLink value="alterar">
+								<f:setPropertyActionListener value="#{usuario}" 
+										target="#{usuarioBean.usuario}" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
+		</div>
+		
+		<div id="rodape">
+		     <div class="rodape-bar">
+				<strong>Bug Tracker</strong> - TriadWorks
+			</div>
+		</div>
 	</h:body>
 </html>
