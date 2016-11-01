@@ -52,7 +52,9 @@
 						<h:commandLink value="Cancelar" action="usuarios.xhtml" 
 							immediate="true" />
 						&#160;
-						<h:commandButton value="Salvar" action="#{usuarioBean.salva}" />
+						<h:commandButton value="Salvar" action="#{usuarioBean.salva}">
+							<f:ajax render="@form" execute="@form" />
+						</h:commandButton>
 					</div>
 					
 					<h:dataTable
