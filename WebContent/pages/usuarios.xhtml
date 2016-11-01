@@ -15,6 +15,9 @@
 				</li>
 			</ul>
 		</div>
+		
+		<h:messages errorClass="errors" />
+		
 		<div id="conteudo">
 			<div id="container">
 				<h:form>
@@ -30,13 +33,16 @@
 				
 					<h:outputLabel value="Nome" for="nome" />
 					<h:inputText id="nome" value="#{usuarioBean.usuario.nome}" 
-						styleClass="texto-longo" />
+						styleClass="texto-longo" required="true" />
 		
 					<h:outputLabel value="Login" for="login" />
-					<h:inputText id="login" value="#{usuarioBean.usuario.login}" />
+					<h:inputText id="login" value="#{usuarioBean.usuario.login}" required="true">
+						<f:validateLength minimum="4" />
+						<f:validateRegex pattern="[a-zA-Z]+" />
+					</h:inputText>
 		
 					<h:outputLabel value="Senha" for="senha" />
-					<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" />
+					<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}" required="true" />
 	
 					<div class="acoes-principais">
 						<h:commandLink value="Cancelar" action="#{usuarioBean.cancela}" />
