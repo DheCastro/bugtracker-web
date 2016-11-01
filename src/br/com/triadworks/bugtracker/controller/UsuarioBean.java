@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
 import br.com.triadworks.bugtracker.modelo.Usuario;
+import br.com.triadworks.bugtracker.util.FacesUtils;
 
 @ManagedBean
 public class UsuarioBean { 
@@ -22,6 +23,7 @@ public class UsuarioBean {
 		}
 
 		this.usuario = new Usuario(); // limpa os campos
+		new FacesUtils().adicionaMensagemDeSucesso("Usuário adicionado com sucesso!");
 	}
 	
 	public List<Usuario> getUsuarios() {
@@ -32,6 +34,7 @@ public class UsuarioBean {
 	public void remove(Usuario usuario) {
 		UsuarioDao dao = new UsuarioDao();
 		dao.remove(usuario);
+		new FacesUtils().adicionaMensagemDeSucesso("Usuário removido com sucesso!");
 	}
 	
 	public void cancela() {
