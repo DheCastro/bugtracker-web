@@ -10,9 +10,9 @@
 	</application>
 	
 	<lifecycle>
-		<phase-listener>
+		<!-- <phase-listener>
 			br.com.triadworks.bugtracker.controller.listener.CicloDeVidaListener
-		</phase-listener>
+		</phase-listener> -->
 	</lifecycle>
 
 </faces-config>
