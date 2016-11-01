@@ -47,7 +47,8 @@
 						required="true" label="Senha" />
 	
 					<div class="acoes-principais">
-						<h:commandLink value="Cancelar" action="#{usuarioBean.cancela}" />
+						<h:commandLink value="Cancelar" action="usuarios.xhtml" 
+							immediate="true" />
 						&#160;
 						<h:commandButton value="Salvar" action="#{usuarioBean.salva}" />
 					</div>
@@ -70,9 +71,10 @@
 						
 						<h:column>
 							<f:facet name="header">Ações</f:facet>
-							<h:commandLink value="remover" action="#{usuarioBean.remove(usuario)}"/>
+							<h:commandLink value="remover" action="#{usuarioBean.remove(usuario)}" 
+								immediate="true" />
 							&#160;
-							<h:commandLink value="alterar">
+							<h:commandLink value="alterar" immediate="true" action="usuarios.xhtml">
 								<f:setPropertyActionListener value="#{usuario}" 
 										target="#{usuarioBean.usuario}" />
 							</h:commandLink>
