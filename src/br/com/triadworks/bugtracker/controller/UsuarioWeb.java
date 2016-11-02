@@ -17,6 +17,10 @@ public class UsuarioWeb implements Serializable {
 		this.usuario = usuario;
 	}
 	
+	public boolean isLogado() {
+		return this.usuario != null;
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
