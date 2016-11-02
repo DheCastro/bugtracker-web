@@ -24,7 +24,7 @@ public class LoginBean {
 		Usuario usuario = autenticador.autentica(login, senha);
 		if (usuario != null) {
 			usuarioWeb.loga(usuario); // preenche usuário na sessão
-			return "/pages/usuarios";
+			return "/pages/usuarios?faces-redirect=true";
 		}
 		new FacesUtils().adicionaMensagemDeErro("Login ou senha inválido.");
 		return null;
