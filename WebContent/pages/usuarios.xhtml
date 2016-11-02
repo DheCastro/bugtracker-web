@@ -10,7 +10,10 @@
     <h:body>
     		<div id="cabecalho">
     			<div id="user-info">
-				#{usuarioWeb.usuario.login}
+				<h:form> 
+					#{usuarioWeb.usuario.login} -
+					<h:commandLink value="Sair" action="#{loginBean.sair}" />
+				</h:form>
 			</div>
 			<ul id="menu-principal">
 				<li>

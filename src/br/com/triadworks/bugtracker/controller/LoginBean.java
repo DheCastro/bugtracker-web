@@ -29,6 +29,11 @@ public class LoginBean {
 		new FacesUtils().adicionaMensagemDeErro("Login ou senha inválido.");
 		return null;
 	}
+	
+	public String sair() {
+		usuarioWeb.desloga();
+		return "/login?faces-redirect=true";
+	}
 
 	public String getLogin() {
 		return login;
