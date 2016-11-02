@@ -1,10 +1,12 @@
 package br.com.triadworks.bugtracker.service;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
 import br.com.triadworks.bugtracker.modelo.Usuario;
 
+@ApplicationScoped
 public class AutenticadorImpl implements Autenticador {
 	
 	@Inject
