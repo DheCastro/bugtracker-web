@@ -2,20 +2,24 @@ package br.com.triadworks.bugtracker.controller;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
-@ManagedBean
+@Named
+@RequestScoped // javax.enterprise.context.RequestScoped
 public class UsuarioBean { 
 
+	@Inject
+	private UsuarioDao dao;
+	
 	private Usuario usuario = new Usuario();
 
 	public void salva() {
-		UsuarioDao dao = new UsuarioDao();
-
 		if (this.usuario.getId() == null) {
 			dao.adiciona(this.usuario);
 		} else {
@@ -27,12 +31,10 @@ public class UsuarioBean {
 	}
 	
 	public List<Usuario> getUsuarios() {
-		UsuarioDao dao = new UsuarioDao();
 		return dao.lista();
 	}
 	
 	public void remove(Usuario usuario) {
-		UsuarioDao dao = new UsuarioDao();
 		dao.remove(usuario);
 		new FacesUtils().adicionaMensagemDeSucesso("Usuário removido com sucesso!");
 	}

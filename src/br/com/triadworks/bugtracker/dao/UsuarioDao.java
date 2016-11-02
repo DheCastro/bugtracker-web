@@ -2,6 +2,7 @@ package br.com.triadworks.bugtracker.dao;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -10,14 +11,15 @@ import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.JPAUtil;
 
 public class UsuarioDao {
+	
+	@Inject
+	private EntityManager manager;
 
 	public List<Usuario> lista() {
-		EntityManager manager = new JPAUtil().getEntityManager();
 		try {
 			return manager.createQuery("select u from Usuario u", Usuario.class)
 					.getResultList();
 		} finally {
-			manager.close();
 		}
 	}
 
@@ -33,7 +35,6 @@ public class UsuarioDao {
 				transaction.rollback();
 			}
 		} finally {
-			manager.close();
 		}
 	}
 
@@ -49,7 +50,6 @@ public class UsuarioDao {
 				transaction.rollback();
 			}
 		} finally {
-			manager.close();
 		}
 	}
 
@@ -65,7 +65,6 @@ public class UsuarioDao {
 				transaction.rollback();
 			}
 		} finally {
-			manager.close();
 		}
 	}
 
@@ -74,7 +73,6 @@ public class UsuarioDao {
 		try {
 			return manager.find(Usuario.class, id);
 		} finally {
-			manager.close();
 		}
 	}
 
@@ -91,7 +89,6 @@ public class UsuarioDao {
 		} catch (NoResultException e) {
 			return null;
 		} finally {
-			manager.close();
 		}
 	}
 
