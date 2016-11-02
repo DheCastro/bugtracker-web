@@ -9,6 +9,9 @@
     </h:head>
     <h:body>
     		<div id="cabecalho">
+    			<div id="user-info">
+				#{usuarioWeb.usuario.login}
+			</div>
 			<ul id="menu-principal">
 				<li>
 					<h:link value="Usuários" outcome="/pages/usuarios.xhtml" />
