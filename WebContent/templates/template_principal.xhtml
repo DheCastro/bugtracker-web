@@ -10,17 +10,19 @@
     </h:head>
     <h:body>
     		<div id="cabecalho">
-    			<div id="user-info">
-				<h:form> 
-					#{usuarioWeb.usuario.login} -
-					<h:commandLink value="Sair" action="#{loginBean.sair}" />
-				</h:form>
-			</div>
-			<ul id="menu-principal">
-				<li>
-					<h:link value="Usuários" outcome="/pages/usuarios.xhtml" />
-				</li>
-			</ul>
+    			<ui:insert name="cabecalho">
+	    			<div id="user-info">
+					<h:form> 
+						#{usuarioWeb.usuario.login} -
+						<h:commandLink value="Sair" action="#{loginBean.sair}" />
+					</h:form>
+				</div>
+				<ul id="menu-principal">
+					<li>
+						<h:link value="Usuários" outcome="/pages/usuarios.xhtml" />
+					</li>
+				</ul>
+			</ui:insert>
 		</div>
 		
 		<h:messages id="mensagens" errorClass="errors" infoClass="success" />
