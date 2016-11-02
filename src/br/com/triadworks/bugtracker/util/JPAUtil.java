@@ -1,5 +1,6 @@
 package br.com.triadworks.bugtracker.util;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ public class JPAUtil {
 				Persistence.createEntityManagerFactory("bugtracker");
 
 	@Produces
+	@RequestScoped
     public EntityManager getEntityManager() {
         return factory.createEntityManager();
     }
