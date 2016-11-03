@@ -2,6 +2,7 @@ package br.com.triadworks.bugtracker.controller;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -9,8 +10,7 @@ import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.service.Autenticador;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
-@Named
-@RequestScoped // javax.enterprise.context.RequestScoped
+@Model
 public class LoginBean {
 
 	private String login;

@@ -3,6 +3,7 @@ package br.com.triadworks.bugtracker.controller;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,8 +12,7 @@ import br.com.triadworks.bugtracker.interceptor.Transacional;
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
-@Named
-@RequestScoped // javax.enterprise.context.RequestScoped
+@Model
 public class UsuarioBean { 
 
 	@Inject
