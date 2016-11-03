@@ -16,7 +16,9 @@
 		        		required="true" label="Arquivo" />
 		        <div class="acoes-principais">
 					<h:commandButton value="Importar" 
-						action="#{uploadBean.upload}" />
+						action="#{uploadBean.upload}">
+						<f:ajax render="@form" execute="@form" />
+					</h:commandButton>
 				</div>
 			</h:form>
 		</ui:define>
