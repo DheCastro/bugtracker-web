@@ -10,7 +10,8 @@
 			<h1>Dashboard</h1>
 
 			<h:form id="form">
-				<p:dataTable value="#{dashboardBean.bugs}" var="bug" paginator="true" rows="4">
+				<p:dataTable value="#{bugDataModel}" var="bug" 
+					paginator="true" rows="4" lazy="true">
 					<p:column headerText="ID"> 
 						#{bug.id}
 					</p:column> 
