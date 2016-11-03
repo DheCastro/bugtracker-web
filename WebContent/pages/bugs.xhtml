@@ -11,63 +11,70 @@
 				<h1>Novo Bug</h1>
 				<fieldset>
 					<legend>Dados do Bug</legend>
-			
-			        <h:outputLabel value="Sumário" for="sumario" />
-					<h:inputText id="sumario" 
-						value="#{bugBean.bug.sumario}" label="Sumário" 
-						required="true" styleClass="texto-longo" />
-							
-					<h:outputLabel value="Descrição" for="descricao" />
-					<h:inputTextarea id="descricao" rows="3"
-						required="true" label="Descrição" value="#{bugBean.bug.descricao}"
-						styleClass="texto-longo">
-						<f:validateLength maximum="1000" />
-					</h:inputTextarea>
-	
-					<h:outputLabel value="Status" for="status" />
-		        		<h:selectOneRadio id="status" value="#{bugBean.bug.status}">
-			        		<f:selectItems value="#{bugBean.todosOsStatus}" var="s" 
-			        			itemLabel="#{s.descricao}" itemValue="#{s}" />
-			        	</h:selectOneRadio>
-			        	
-					<h:outputLabel value="Reportado em" for="criadoEm" />
-					<h:inputText id="criadoEm" value="#{bugBean.bug.criadoEm}" label="Reportado em" 
-						required="true">
-						<f:convertDateTime pattern="dd/MM/yyyy"/>
-					</h:inputText>
+					<h:panelGroup id="pnl-bug" >
+				        <h:outputLabel value="Sumário" for="sumario" />
+						<h:inputText id="sumario" 
+							value="#{bugBean.bug.sumario}" label="Sumário" 
+							required="true" styleClass="texto-longo" />
+								
+						<h:outputLabel value="Descrição" for="descricao" />
+						<h:inputTextarea id="descricao" rows="3"
+							required="true" label="Descrição" value="#{bugBean.bug.descricao}"
+							styleClass="texto-longo">
+							<f:validateLength maximum="1000" />
+						</h:inputTextarea>
+		
+						<h:outputLabel value="Status" for="status" />
+			        		<h:selectOneRadio id="status" value="#{bugBean.bug.status}">
+				        		<f:selectItems value="#{bugBean.todosOsStatus}" var="s" 
+				        			itemLabel="#{s.descricao}" itemValue="#{s}" />
+				        	</h:selectOneRadio>
+				        	
+						<h:outputLabel value="Reportado em" for="criadoEm" />
+						<h:inputText id="criadoEm" value="#{bugBean.bug.criadoEm}" label="Reportado em" 
+							required="true">
+							<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</h:inputText>
+					</h:panelGroup>
 				</fieldset>
 				
 				<fieldset class="responsaveis">
 					<legend>Dados do Responsável</legend>
 					
-					<h:selectOneMenu label="Responsável"
-						value="#{bugBean.responsavel.id}" required="true"
-						>
-						<f:selectItem itemLabel="Selecione um usuário" noSelectionOption="true" />
-						<f:selectItems value="#{bugBean.usuarios}" var="u" 
-							itemLabel="#{u.nome}" itemValue="#{u.id}" />
-					</h:selectOneMenu>
-					
-					<h:commandButton value="Adicionar responsável" action="#{bugBean.adicionarResponsavel}" />
-					
-					<h:dataTable
-						value="#{bugBean.bug.responsaveis}" var="r"
-						styleClass="dados" rowClasses="impar, par">
-						<h:column>
-							<f:facet name="header">Login</f:facet>
-							#{r.login}
-						</h:column>
-						<h:column>
-							<f:facet name="header">Nome</f:facet>
-							#{r.nome}
-						</h:column>
-					</h:dataTable>
+					<h:panelGroup id="pnl-responsavel" >
+						<h:selectOneMenu label="Responsável"
+							value="#{bugBean.responsavel.id}" required="true"
+							>
+							<f:selectItem itemLabel="Selecione um usuário" noSelectionOption="true" />
+							<f:selectItems value="#{bugBean.usuarios}" var="u" 
+								itemLabel="#{u.nome}" itemValue="#{u.id}" />
+						</h:selectOneMenu>
+						
+						<h:commandButton value="Adicionar responsável" action="#{bugBean.adicionarResponsavel}">
+							<f:ajax render="pnl-responsavel :mensagens" execute="pnl-responsavel" />
+						</h:commandButton>
+						
+						<h:dataTable
+							value="#{bugBean.bug.responsaveis}" var="r"
+							styleClass="dados" rowClasses="impar, par">
+							<h:column>
+								<f:facet name="header">Login</f:facet>
+								#{r.login}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Nome</f:facet>
+								#{r.nome}
+							</h:column>
+						</h:dataTable>
+					</h:panelGroup>
 				</fieldset>
 				
 				<div class="acoes-principais">
 					<h:commandLink value="Cancelar" action="bugs.xhtml" immediate="true" />
 					&#160;
-					<h:commandButton value="Salvar" action="#{bugBean.salva}" />
+					<h:commandButton value="Salvar" action="#{bugBean.salva}">
+						<f:ajax render="@form :mensagens" execute="pnl-bug" />
+					</h:commandButton>
 				</div>
 			</h:form>
 		</ui:define>
