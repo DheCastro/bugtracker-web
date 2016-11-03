@@ -1,6 +1,7 @@
 package br.com.triadworks.bugtracker.controller;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,10 +24,14 @@ public class LoginBean {
 	@Inject
 	private FacesUtils facesUtils;
 	
+	@Inject
+	private Event<Usuario> eventoDeLogin;
+	
 	public String logar() {
 		Usuario usuario = autenticador.autentica(login, senha);
 		if (usuario != null) {
 			usuarioWeb.loga(usuario); // preenche usuário na sessão
+			eventoDeLogin.fire(usuario);
 			return "/pages/usuarios?faces-redirect=true";
 		}
 		facesUtils.adicionaMensagemDeErro("Login ou senha inválido.");
