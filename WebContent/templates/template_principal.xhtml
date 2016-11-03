@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" >
 
     <h:head>
         <title>Bug Tracker</title>
@@ -31,7 +32,9 @@
 			</ui:insert>
 		</div>
 		
-		<h:messages id="mensagens" errorClass="errors" infoClass="success" />
+		<p:outputPanel autoUpdate="true" >
+			<h:messages id="mensagens" errorClass="errors" infoClass="success" />
+		</p:outputPanel>
 		
 		<div id="conteudo">
 			<div id="container">

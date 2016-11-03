@@ -51,7 +51,7 @@
 						</h:selectOneMenu>
 						
 						<h:commandButton value="Adicionar responsável" action="#{bugBean.adicionarResponsavel}">
-							<f:ajax render="pnl-responsavel :mensagens" execute="pnl-responsavel" />
+							<f:ajax render="pnl-responsavel" execute="pnl-responsavel" />
 						</h:commandButton>
 						
 						<h:dataTable
@@ -73,7 +73,7 @@
 					<h:commandLink value="Cancelar" action="bugs.xhtml" immediate="true" />
 					&#160;
 					<h:commandButton value="Salvar" action="#{bugBean.salva}">
-						<f:ajax render="@form :mensagens" execute="pnl-bug" />
+						<f:ajax render="@form" execute="pnl-bug" />
 					</h:commandButton>
 				</div>
 			</h:form>
