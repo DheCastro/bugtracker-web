@@ -1,5 +1,7 @@
 package br.com.triadworks.bugtracker.interceptor;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
@@ -8,7 +10,7 @@ import javax.persistence.EntityManager;
 
 @Interceptor
 @Transacional // nossa anotação customizada
-public class TransacionalInterceptor {
+public class TransacionalInterceptor implements Serializable {
 
 	@Inject
 	private EntityManager manager;

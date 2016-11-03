@@ -1,5 +1,6 @@
 package br.com.triadworks.bugtracker.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,7 +10,7 @@ import javax.persistence.NoResultException;
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.JPAUtil;
 
-public class UsuarioDao {
+public class UsuarioDao implements Serializable {
 	
 	@Inject
 	private EntityManager manager;

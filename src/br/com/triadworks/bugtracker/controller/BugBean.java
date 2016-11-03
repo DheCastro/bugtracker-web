@@ -1,9 +1,10 @@
 package br.com.triadworks.bugtracker.controller;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,8 +17,8 @@ import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
 @Named
-@RequestScoped
-public class BugBean {
+@ViewScoped // javax.faces.view.ViewScoped
+public class BugBean implements Serializable {
 
 	private Bug bug = new Bug();
 	private Usuario responsavel = new Usuario();

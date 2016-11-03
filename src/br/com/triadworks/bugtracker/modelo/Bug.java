@@ -33,7 +33,7 @@ public class Bug implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date criadoEm;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	private List<Usuario> responsaveis = new ArrayList<Usuario>();
 	
 	@Enumerated(EnumType.STRING)

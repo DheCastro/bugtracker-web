@@ -1,5 +1,6 @@
 package br.com.triadworks.bugtracker.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +9,7 @@ import javax.persistence.EntityManager;
 import br.com.triadworks.bugtracker.modelo.Bug;
 import br.com.triadworks.bugtracker.modelo.Comentario;
 
-public class BugDao {
+public class BugDao implements Serializable {
 	
 	@Inject
 	private EntityManager manager;
