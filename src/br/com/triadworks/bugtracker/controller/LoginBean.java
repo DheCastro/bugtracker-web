@@ -20,13 +20,16 @@ public class LoginBean {
 	@Inject
 	private Autenticador autenticador;
 	
+	@Inject
+	private FacesUtils facesUtils;
+	
 	public String logar() {
 		Usuario usuario = autenticador.autentica(login, senha);
 		if (usuario != null) {
 			usuarioWeb.loga(usuario); // preenche usuário na sessão
 			return "/pages/usuarios?faces-redirect=true";
 		}
-		new FacesUtils().adicionaMensagemDeErro("Login ou senha inválido.");
+		facesUtils.adicionaMensagemDeErro("Login ou senha inválido.");
 		return null;
 	}
 	

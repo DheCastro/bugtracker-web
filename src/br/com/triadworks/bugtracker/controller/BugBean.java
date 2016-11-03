@@ -31,6 +31,9 @@ public class BugBean implements Serializable {
 	@Inject
 	private UsuarioDao usuarioDao;
 	
+	@Inject
+	private FacesUtils facesUtils;
+	
 	@PostConstruct
 	public void init() {
 		this.usuarios = usuarioDao.lista();
@@ -40,7 +43,7 @@ public class BugBean implements Serializable {
 	public void salva() {
 		this.bugDao.adiciona(bug);
 		this.bug = new Bug();
-		new FacesUtils().adicionaMensagemDeSucesso("Bug adicionado com sucesso!");
+		facesUtils.adicionaMensagemDeSucesso("Bug adicionado com sucesso!");
 	}
 	
 	public void adicionarResponsavel() {

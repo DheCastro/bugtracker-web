@@ -17,6 +17,8 @@ public class UsuarioBean {
 
 	@Inject
 	private UsuarioDao dao;
+	@Inject
+	private FacesUtils facesUtils;
 	
 	private Usuario usuario = new Usuario();
 
@@ -29,7 +31,7 @@ public class UsuarioBean {
 		}
 
 		this.usuario = new Usuario(); // limpa os campos
-		new FacesUtils().adicionaMensagemDeSucesso("Usuário adicionado com sucesso!");
+		facesUtils.adicionaMensagemDeSucesso("Usuário adicionado com sucesso!");
 	}
 	
 	public List<Usuario> getUsuarios() {
@@ -39,7 +41,7 @@ public class UsuarioBean {
 	@Transacional
 	public void remove(Usuario usuario) {
 		dao.remove(usuario);
-		new FacesUtils().adicionaMensagemDeSucesso("Usuário removido com sucesso!");
+		facesUtils.adicionaMensagemDeSucesso("Usuário removido com sucesso!");
 	}
 	
 	public void cancela() {
