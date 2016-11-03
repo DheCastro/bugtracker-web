@@ -39,6 +39,15 @@ public class BugBean implements Serializable {
 		this.usuarios = usuarioDao.lista();
 	}
 	
+	public String carrega() {
+		if (bug.getId() != null) {
+			bug = bugDao.busca(bug.getId());
+			return null;
+		}
+		facesUtils.adicionaMensagemDeErro("Bug inválido ou não encontrado.");
+		return "/pages/dashboard";
+	}
+	
 	@Transacional
 	public void salva() {
 		this.bugDao.adiciona(bug);
