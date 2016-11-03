@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/templates/template_principal.xhtml">
+		<ui:define name="corpo">
+			<h1>Dashboard</h1>
+
+			<h:form id="form">
+				<p:dataTable value="#{dashboardBean.bugs}" var="bug" paginator="true" rows="4">
+					<p:column headerText="ID"> 
+						#{bug.id}
+					</p:column> 
+					<p:column headerText="Sumário"> 
+						#{bug.sumario}
+					</p:column> 
+					<p:column headerText="Status"> 
+						#{bug.status}
+					</p:column> 
+					<p:column headerText="Reportado em"> 
+						<h:outputText value="#{bug.criadoEm}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column> 
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

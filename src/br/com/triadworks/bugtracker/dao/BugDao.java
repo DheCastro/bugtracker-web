@@ -31,12 +31,8 @@ public class BugDao implements Serializable {
 	}
 	
 	public List<Bug> lista() {
-		try {
-			return manager.createQuery("select b from Bug b", Bug.class)
-					.getResultList();
-		} finally {
-			manager.close();
-		}
+		return manager.createQuery("select b from Bug b", Bug.class)
+				.getResultList();
 	}
 
 	public List<Bug> listaPaginada(int inicio, int quantidade) {
