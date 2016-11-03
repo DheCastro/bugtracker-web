@@ -13,7 +13,9 @@
     		<h:form id="form" enctype="multipart/form-data">
 		        <h:outputLabel value="Arquivo" for="arquivo" />
 		        <h:inputFile id="arquivo" value="#{uploadBean.arquivo}" 
-		        		required="true" label="Arquivo" />
+		        		required="true" label="Arquivo" 
+		        		validator="#{uploadBean.valida}"/>
+		        		
 		        <div class="acoes-principais">
 					<h:commandButton value="Importar" 
 						action="#{uploadBean.upload}">

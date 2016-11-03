@@ -3,6 +3,10 @@ package br.com.triadworks.bugtracker.controller;
 import java.util.Scanner;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
@@ -21,6 +25,16 @@ public class UploadBean {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void valida(FacesContext context, UIComponent component, Object value) {
+
+		Part file = (Part) value;
+		if (!"text/plain".equals(file.getContentType())) {
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+					"Tipo de arquivo inválido", "O arquivo deve ser do tipo texto.");
+			throw new ValidatorException(msg);
 		}
 	}
 
