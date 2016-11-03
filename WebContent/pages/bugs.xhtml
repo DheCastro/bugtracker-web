@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition template="/templates/template_principal.xhtml">
 		<ui:define name="corpo">
@@ -31,10 +32,9 @@
 				        	</h:selectOneRadio>
 				        	
 						<h:outputLabel value="Reportado em" for="criadoEm" />
-						<h:inputText id="criadoEm" value="#{bugBean.bug.criadoEm}" label="Reportado em" 
-							required="true">
-							<f:convertDateTime pattern="dd/MM/yyyy"/>
-						</h:inputText>
+						<p:calendar id="criadoEm" value="#{bugBean.bug.criadoEm}" 
+								pattern="dd/MM/yyyy" mask="true"
+								required="true" label="Reportado em" />
 					</h:panelGroup>
 				</fieldset>
 				

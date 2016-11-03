@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" >
 
 	<ui:composition template="/templates/template_principal.xhtml">
 		<ui:define name="corpo">
@@ -33,6 +34,9 @@
 					required="true" label="Senha">
 					<f:validator validatorId="senhaForte" />
 				</h:inputSecret>
+				
+				<h:outputLabel value="CPF" for="cpf"/>
+				<p:inputMask id="cpf" label="CPF" mask="999.999.999-99" />
 
 				<div class="acoes-principais">
 					<h:commandLink value="Cancelar" action="usuarios.xhtml" 
