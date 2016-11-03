@@ -60,21 +60,4 @@ public class BugDao {
 				.getResultList();
 	}
 	
-	public Bug buscaComComentarios(Integer id) {
-		Bug bug = manager.find(Bug.class, id);
-		if (bug != null)
-			bug.getComentarios().size();
-		return bug;
-	}
-	
-	public void comenta(Integer id, Comentario comentario) {
-		Bug bug = this.busca(id);
-		bug.comenta(comentario);
-	}
-	
-	public void fecha(Integer id, Comentario comentario) {
-		Bug bug = this.busca(id);
-		bug.fecha(comentario);
-	}
-	
 }

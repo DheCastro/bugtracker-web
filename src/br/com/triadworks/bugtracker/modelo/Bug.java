@@ -12,8 +12,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -33,15 +33,11 @@ public class Bug implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date criadoEm;
 	
-	@ManyToOne
-	private Usuario responsavel;
+	@ManyToMany(cascade=CascadeType.ALL)
+	private List<Usuario> responsaveis = new ArrayList<Usuario>();
 	
 	@Enumerated(EnumType.STRING)
 	private Status status = Status.ABERTO;
-	
-	@OneToMany(cascade=CascadeType.ALL, 
-			orphanRemoval=true, mappedBy="bug")
-	private List<Comentario> comentarios = new ArrayList<Comentario>();
 	
 	public Integer getId() {
 		return id;
@@ -67,23 +63,15 @@ public class Bug implements Serializable {
 	public void setCriadoEm(Date criadoEm) {
 		this.criadoEm = criadoEm;
 	}
-	public Usuario getResponsavel() {
-		return responsavel;
-	}
-	public void setResponsavel(Usuario responsavel) {
-		this.responsavel = responsavel;
-	}
 	public Status getStatus() {
 		return status;
 	}
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public List<Comentario> getComentarios() {
-		return comentarios;
-	}
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
+	
+	public List<Usuario> getResponsaveis() {
+		return responsaveis;
 	}
 
 	@Override
@@ -110,17 +98,8 @@ public class Bug implements Serializable {
 		return true;
 	}
 	
-	public void comenta(Comentario comentario) {
-		comentario.setCriadoEm(new Date());
-		comentario.setBug(this);
-		this.comentarios.add(comentario);
-	}
-	
-	public void fecha(Comentario comentario) {
-		comentario.setCriadoEm(new Date());
-		comentario.setBug(this);
-		this.comentarios.add(comentario);
-		this.status = Status.FECHADO;
+	public void adiciona(Usuario responsavel) {
+		this.responsaveis.add(responsavel);
 	}
 	
 }

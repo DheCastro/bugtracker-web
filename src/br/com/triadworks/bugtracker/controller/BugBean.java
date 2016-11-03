@@ -20,21 +20,24 @@ import br.com.triadworks.bugtracker.util.FacesUtils;
 public class BugBean {
 
 	private Bug bug = new Bug();
+	private Usuario responsavel = new Usuario();
 	
 	@Inject
 	private BugDao bugDao;
 	@Inject
 	private UsuarioDao usuarioDao;
 	
-	public BugBean() {
-		this.bug.setResponsavel(new Usuario());
-	}
-	
 	@Transacional
 	public void salva() {
 		this.bugDao.adiciona(bug);
 		this.bug = new Bug();
 		new FacesUtils().adicionaMensagemDeSucesso("Bug adicionado com sucesso!");
+	}
+	
+	public void adicionarResponsavel() {
+		this.responsavel = usuarioDao.busca(responsavel.getId());
+		this.bug.adiciona(responsavel);
+		this.responsavel = new Usuario(); // limpa dados
 	}
 	
 	public List<Status> getTodosOsStatus() {
@@ -50,5 +53,11 @@ public class BugBean {
 	}
 	public void setBug(Bug bug) {
 		this.bug = bug;
+	}
+	public Usuario getResponsavel() {
+		return responsavel;
+	}
+	public void setResponsavel(Usuario responsavel) {
+		this.responsavel = responsavel;
 	}
 }
