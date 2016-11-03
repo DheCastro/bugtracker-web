@@ -39,8 +39,10 @@
 				<p:inputMask id="cpf" label="CPF" mask="999.999.999-99" />
 
 				<div class="acoes-principais">
-					<h:commandLink value="Cancelar" action="usuarios.xhtml" 
-						immediate="true" />
+					<h:commandLink value="Cancelar" action="#{usuarioBean.cancela}" 
+						immediate="true">
+						<f:ajax render="@form" resetValues="true" /> 
+					</h:commandLink>
 					&#160;
 					<h:commandButton value="Salvar" action="#{usuarioBean.salva}">
 						<f:ajax render="@form :mensagens" execute="@form" />
