@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,10 +24,17 @@ public class BugBean implements Serializable {
 	private Bug bug = new Bug();
 	private Usuario responsavel = new Usuario();
 	
+	private List<Usuario> usuarios;
+	
 	@Inject
 	private BugDao bugDao;
 	@Inject
 	private UsuarioDao usuarioDao;
+	
+	@PostConstruct
+	public void init() {
+		this.usuarios = usuarioDao.lista();
+	}
 	
 	@Transacional
 	public void salva() {
@@ -46,7 +54,7 @@ public class BugBean implements Serializable {
 	}
 	
 	public List<Usuario> getUsuarios() {
-		return usuarioDao.lista();
+		return this.usuarios;
 	}
 
 	public Bug getBug() {
