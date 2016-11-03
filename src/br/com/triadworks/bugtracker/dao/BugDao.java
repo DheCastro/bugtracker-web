@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 
 import br.com.triadworks.bugtracker.modelo.Bug;
 import br.com.triadworks.bugtracker.modelo.Comentario;
+import br.com.triadworks.bugtracker.util.Repository;
 
+@Repository
 public class BugDao implements Serializable {
 	
 	@Inject

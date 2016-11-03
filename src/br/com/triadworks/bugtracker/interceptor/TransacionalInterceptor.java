@@ -7,6 +7,7 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 @Interceptor
 @Transacional // nossa anotação customizada
@@ -18,6 +19,11 @@ public class TransacionalInterceptor implements Serializable {
 	@AroundInvoke
 	public Object intercepta(InvocationContext ctx) throws Exception {
 
+		EntityTransaction tx = manager.getTransaction();
+		if (tx.isActive()) {
+			return ctx.proceed();
+		}
+		
 		System.out.println("Abrindo a transação");
 		manager.getTransaction().begin(); // inicia transação
 		
