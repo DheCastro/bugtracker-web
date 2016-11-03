@@ -37,6 +37,13 @@
 		</p:outputPanel>
 		
 		<div id="conteudo">
+			<div id="ajax-loading">
+				<p:ajaxStatus>
+					<f:facet name="start">
+						<h:graphicImage library="imagens" name="ajax-loader.gif" />
+					</f:facet> 
+				</p:ajaxStatus>
+			</div>
 			<div id="container">
 			
 				<ui:insert name="corpo" />
