@@ -7,11 +7,6 @@
 
 	<display-name>bugtracker-web</display-name>
 	
-	<context-param>
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>client</param-value>
-	</context-param>
-
 	<!-- Ajuda no REFRESH das paginas durante o desenvolvimento -->
 	<context-param>
 		<param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
@@ -19,11 +14,14 @@
 	</context-param>
 	
 	<!-- Usa fuso horário da JVM -->
+	<!-- 
 	<context-param>
         <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
         <param-value>true</param-value>
     </context-param>
-
+ 	-->
+ 	
+ 	<!-- Faces Servlet -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
