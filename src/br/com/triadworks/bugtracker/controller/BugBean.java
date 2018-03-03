@@ -42,10 +42,12 @@ public class BugBean implements Serializable {
 	public String carrega() {
 		if (bug.getId() != null) {
 			bug = bugDao.busca(bug.getId());
-			return null;
+			if (bug == null) {
+				facesUtils.adicionaMensagemDeErro("Bug inválido ou não encontrado.");
+				return "/pages/dashboard";
+			}
 		}
-		facesUtils.adicionaMensagemDeErro("Bug inválido ou não encontrado.");
-		return "/pages/dashboard";
+		return null;
 	}
 	
 	@Transacional
