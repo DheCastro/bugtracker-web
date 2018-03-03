@@ -21,6 +21,7 @@ public class UsuarioBean {
 	private FacesUtils facesUtils;
 	
 	private Usuario usuario = new Usuario();
+	private List<Usuario> usuarios;
 
 	@Transactional
 	public void salva() {
@@ -35,7 +36,10 @@ public class UsuarioBean {
 	}
 	
 	public List<Usuario> getUsuarios() {
-		return dao.lista();
+		if (this.usuarios == null) {
+			this.usuarios = dao.lista();
+		}
+		return this.usuarios;
 	}
 	
 	@Transactional
