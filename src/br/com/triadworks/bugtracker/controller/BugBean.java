@@ -53,9 +53,14 @@ public class BugBean implements Serializable {
 	
 	@Transactional
 	public void salva() {
-		this.bugDao.adiciona(bug);
-		this.bug = new Bug();
-		facesUtils.adicionaMensagemDeSucesso("Bug adicionado com sucesso!");
+		if (bug.getId() == null) {
+			this.bugDao.adiciona(bug);
+			this.bug = new Bug();
+			facesUtils.adicionaMensagemDeSucesso("Bug adicionado com sucesso!");
+		} else {
+			this.bugDao.atualiza(bug);
+			facesUtils.adicionaMensagemDeSucesso("Bug atualizado com sucesso!");
+		}
 	}
 	
 	public void adicionarResponsavel() {
