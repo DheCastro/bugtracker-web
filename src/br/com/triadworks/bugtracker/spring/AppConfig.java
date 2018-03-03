@@ -44,6 +44,7 @@ public class AppConfig {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setDataSource(dataSource());
 		factory.setPackagesToScan("br.com.triadworks.bugtracker.modelo");
+		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		factory.setJpaVendorAdapter(vendorAdapter);
 		factory.setJpaProperties(additionalProperties());
