@@ -2,16 +2,17 @@ package br.com.triadworks.bugtracker.controller;
 
 import java.util.Scanner;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Named;
 import javax.servlet.http.Part;
 
-@Named
-@RequestScoped
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
+
+@Controller
+@RequestScope // org.springframework.web.context.annotation.RequestScope;
 public class UploadBean {
 	
 	private Part arquivo;

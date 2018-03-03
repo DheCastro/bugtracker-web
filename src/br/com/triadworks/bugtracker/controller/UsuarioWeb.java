@@ -2,13 +2,13 @@ package br.com.triadworks.bugtracker.controller;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 import br.com.triadworks.bugtracker.modelo.Usuario;
 
-@Named
-@SessionScoped // javax.enterprise.context.SessionScoped
+@Controller
+@SessionScope // org.springframework.web.context.annotation.SessionScope
 public class UsuarioWeb implements Serializable {
 
 	private Usuario usuario;

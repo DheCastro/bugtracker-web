@@ -3,17 +3,17 @@ package br.com.triadworks.bugtracker.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
 
 import br.com.triadworks.bugtracker.modelo.Bug;
-import br.com.triadworks.bugtracker.modelo.Comentario;
-import br.com.triadworks.bugtracker.util.Repository;
 
 @Repository
 public class BugDao implements Serializable {
 	
-	@Inject
+	@PersistenceContext
 	private EntityManager manager;
 
 	public void adiciona(Bug bug) {

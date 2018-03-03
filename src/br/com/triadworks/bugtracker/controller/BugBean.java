@@ -5,20 +5,21 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.annotation.RequestScope;
 
 import br.com.triadworks.bugtracker.dao.BugDao;
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
-import br.com.triadworks.bugtracker.interceptor.Transacional;
 import br.com.triadworks.bugtracker.modelo.Bug;
 import br.com.triadworks.bugtracker.modelo.Status;
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
-@Named
-@ViewScoped // javax.faces.view.ViewScoped
+@Controller
+@RequestScope // TODO: mudar para View Scope
 public class BugBean implements Serializable {
 
 	private Bug bug = new Bug();
@@ -26,12 +27,12 @@ public class BugBean implements Serializable {
 	
 	private List<Usuario> usuarios;
 	
-	@Inject
+	@Autowired
 	private BugDao bugDao;
-	@Inject
+	@Autowired
 	private UsuarioDao usuarioDao;
 	
-	@Inject
+	@Autowired
 	private FacesUtils facesUtils;
 	
 	@PostConstruct
@@ -50,7 +51,7 @@ public class BugBean implements Serializable {
 		return null;
 	}
 	
-	@Transacional
+	@Transactional
 	public void salva() {
 		this.bugDao.adiciona(bug);
 		this.bug = new Bug();

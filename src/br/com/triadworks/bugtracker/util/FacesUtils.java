@@ -1,12 +1,13 @@
 package br.com.triadworks.bugtracker.util;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
-@Named
-@RequestScoped // javax.enterprise.context.RequestScoped
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
+
+@Controller
+@RequestScope // org.springframework.web.context.annotation.RequestScope;
 public class FacesUtils {
 
 	private FacesContext facesContext;

@@ -1,37 +1,32 @@
 package br.com.triadworks.bugtracker.controller;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.event.Event;
-import javax.enterprise.inject.Model;
-import javax.inject.Inject;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
 
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.service.Autenticador;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
-@Model
+@Controller
+@RequestScope // org.springframework.web.context.annotation.RequestScope;
 public class LoginBean {
 
 	private String login;
 	private String senha;
 	
-	@Inject
+	@Autowired
 	private UsuarioWeb usuarioWeb;
-	@Inject
+	@Autowired
 	private Autenticador autenticador;
 	
-	@Inject
+	@Autowired
 	private FacesUtils facesUtils;
-	
-	@Inject
-	private Event<Usuario> eventoDeLogin;
 	
 	public String logar() {
 		Usuario usuario = autenticador.autentica(login, senha);
 		if (usuario != null) {
 			usuarioWeb.loga(usuario); // preenche usuário na sessão
-			eventoDeLogin.fire(usuario);
 			return "/pages/usuarios?faces-redirect=true";
 		}
 		facesUtils.adicionaMensagemDeErro("Login ou senha inválido.");

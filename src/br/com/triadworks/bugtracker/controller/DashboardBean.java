@@ -4,23 +4,24 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
 
 import br.com.triadworks.bugtracker.controller.datamodel.BugDataModel;
 import br.com.triadworks.bugtracker.dao.BugDao;
 import br.com.triadworks.bugtracker.modelo.Bug;
 
-@Named
-@ViewScoped // javax.faces.view.ViewScoped
+@Controller
+@RequestScope // TODO: mudar para View Scope
 public class DashboardBean implements Serializable {
 	
-	@Inject
+	@Autowired
 	private BugDao dao;
 
 	// outra forma de trabalhar com DataModel. Na p:dataTable use #{dashboardBean.dataModel}
-	@Inject
+	@Autowired
 	private BugDataModel dataModel;
 	
 	private List<Bug> bugs;
