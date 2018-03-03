@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.annotation.RequestScope;
@@ -19,7 +20,7 @@ import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
 @Controller
-@RequestScope // TODO: mudar para View Scope
+@Scope("view")
 public class BugBean implements Serializable {
 
 	private Bug bug = new Bug();
