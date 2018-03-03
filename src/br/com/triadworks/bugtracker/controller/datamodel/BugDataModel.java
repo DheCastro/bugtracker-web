@@ -8,14 +8,14 @@ import javax.annotation.PostConstruct;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.triadworks.bugtracker.dao.BugDao;
 import br.com.triadworks.bugtracker.modelo.Bug;
+import br.com.triadworks.bugtracker.spring.annotation.ViewScope;
 
 @Controller
-@Scope("view")
+@ViewScope // alias para @Scope("view")
 public class BugDataModel extends LazyDataModel<Bug> {
 
 	@Autowired
