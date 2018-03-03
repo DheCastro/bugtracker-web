@@ -68,7 +68,7 @@
 					<h:column>
 						<f:facet name="header">Ações</f:facet>
 						<h:commandLink value="remover" action="#{usuarioBean.remove(usuario)}" 
-							immediate="true">
+							immediate="true" onclick="return confirm('Deseja remover este item?');">
 							<f:ajax render="@form :mensagens" />
 						</h:commandLink>
 						&#160;
