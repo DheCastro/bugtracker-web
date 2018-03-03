@@ -8,6 +8,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.triadworks.bugtracker.controller.datamodel.BugDataModel;
 import br.com.triadworks.bugtracker.dao.BugDao;
 import br.com.triadworks.bugtracker.modelo.Bug;
 
@@ -18,6 +19,10 @@ public class DashboardBean implements Serializable {
 	@Inject
 	private BugDao dao;
 
+	// outra forma de trabalhar com DataModel. Na p:dataTable use #{dashboardBean.dataModel}
+	@Inject
+	private BugDataModel dataModel;
+	
 	private List<Bug> bugs;
 	
 	@PostConstruct
@@ -27,5 +32,9 @@ public class DashboardBean implements Serializable {
 	
 	public List<Bug> getBugs() {
 		return bugs;
+	}
+	
+	public BugDataModel getDataModel() {
+		return dataModel;
 	}
 }
