@@ -20,10 +20,11 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableTransactionManagement
+
 @Configuration
-@ComponentScan(basePackages="br.com.triadworks.bugtracker")
+@EnableTransactionManagement
 @PropertySource("classpath:application.properties")
+@ComponentScan(basePackages="br.com.triadworks.bugtracker")
 public class AppConfig {
 	
 	@Autowired
