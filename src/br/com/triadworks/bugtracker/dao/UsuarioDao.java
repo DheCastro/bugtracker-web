@@ -41,7 +41,6 @@ public class UsuarioDao implements Serializable {
 	}
 
 	public Usuario buscaPor(String login, String senha) {
-		EntityManager manager = new JPAUtil().getEntityManager();
 		try {
 			return manager
 					.createQuery(

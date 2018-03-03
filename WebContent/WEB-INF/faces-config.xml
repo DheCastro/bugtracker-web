@@ -7,6 +7,11 @@
 
 	<application>
 		<message-bundle>Mensagens</message-bundle>
+		
+		<!-- Spring EL Resolver -->
+		<el-resolver>
+			org.springframework.web.jsf.el.SpringBeanFacesELResolver
+		</el-resolver>
 	</application>
 	
 	<lifecycle>
