@@ -15,7 +15,7 @@
 	    			<div id="user-info">
 					<h:form> 
 						#{usuarioWeb.usuario.login} -
-						<h:commandLink value="Sair" action="#{loginBean.sair}" />
+						<h:outputLink value="#{request.contextPath}/logout">Sair</h:outputLink>
 					</h:form>
 				</div>
 				<ul id="menu-principal">

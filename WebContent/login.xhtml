@@ -18,10 +18,12 @@
 				<legend>Acesse o Sistema</legend>
 				<h:form>
 					<h:inputText value="#{loginBean.login}" required="true" label="Login" 
-						pt:placeholder="Login" />
+						pt:placeholder="Login" 
+						pt:name="username" />
 
 					<h:inputSecret value="#{loginBean.senha}" 
-						pt:placeholder="Senha"/>
+						pt:placeholder="Senha"
+						pt:name="password" />
 						
 					<div class="acoes-principais">
 						<h:commandButton value="Logar" action="#{loginBean.logar}" />
