@@ -21,6 +21,7 @@ import org.springframework.beans.factory.config.Scope;
  * 
  * Algumas implementações mais rebuscadas e provavelmente sem memory leaks:
  * <ul>
+ * 	<li>https://github.com/joinfaces/joinfaces/blob/master/joinfaces-autoconfigure/src/main/java/org/joinfaces/autoconfigure/integration/viewscope/ViewScope.java</li>
  * 	<li>https://cagataycivici.wordpress.com/2010/02/17/port-jsf-2-0s-viewscope-to-spring-3-0/</li>
  * 	<li>https://github.com/jneat/spring-jsf/blob/master/src/main/java/com/github/jneat/jsf/ViewScope.java</li>
  * 	<li>https://github.com/michail-nikolaev/primefaces-spring-scopes/blob/master/primefaces-scopes-test/src/main/java/org/nkey/primefaces/scopes/test/spring/scope/ViewScope.java</li>
