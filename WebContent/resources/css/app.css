@@ -192,6 +192,22 @@ legend {
 	margin-right: 10px;
 }
 
+.itens {
+	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: right; 
+}
+
+.itens input {
+	display: inline;
+	margin-right: 10px;
+}
+
+.itens select {
+	display: inline;
+	margin-right: 10px;
+}
+
 fieldset.confirma-senha {
 	background-color: #ddd;
 	margin-left: 0;

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/templates/template_principal.xhtml">
+		<ui:define name="corpo">
+			
+			<!-- ********** -->
+			<!-- Executa logica para capturar parametro da URL e carregar Proposta -->
+			<!-- ********** -->
+			<f:metadata>
+				<f:viewParam name="proposta_id" value="#{propostaEdicaoBean.propostaId}" />
+				<f:viewAction action="#{propostaEdicaoBean.carrega}" />
+			</f:metadata>
+			
+			<h:form id="form">
+				<h1>Proposta</h1>
+				<fieldset>
+					<legend>Dados da Proposta</legend>
+					<h:panelGroup id="pnl-proposta" >
+				        <h:outputLabel value="Descrição" for="descricao" />
+						<h:inputText id="descricao" 
+							value="#{propostaEdicaoBean.proposta.descricao}" label="Descrição" 
+							required="true" styleClass="texto-longo" />
+								
+						<h:outputLabel value="Status" for="status" />
+			        		<h:selectOneRadio id="status" value="#{propostaEdicaoBean.proposta.status}"
+			        			disabled="true">
+				        		<f:selectItems value="#{propostaEdicaoBean.todosOsStatus}" var="s" 
+				        			itemLabel="#{s}" itemValue="#{s}" />
+				        	</h:selectOneRadio>
+					</h:panelGroup>
+				</fieldset>
+				
+				<fieldset class="itens">
+					<legend>Dados do Item</legend>
+					
+					<h:panelGroup id="pnl-itens" >
+						<h:inputText id="item-descricao" 
+							value="#{propostaEdicaoBean.novoItem.descricao}" label="Descrição do Item" 
+							required="true" />
+						
+						<h:commandButton value="Adicionar item" action="#{propostaEdicaoBean.adicionaNovoItem}">
+							<f:ajax render="pnl-itens" execute="pnl-itens" />
+						</h:commandButton>
+						
+						<h:dataTable
+							value="#{propostaEdicaoBean.proposta.itens}" var="r"
+							styleClass="dados" rowClasses="impar, par">
+							<h:column>
+								<f:facet name="header">Id</f:facet>
+								#{r.id}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Descrição do Item</f:facet>
+								#{r.descricao}
+							</h:column>
+						</h:dataTable>
+					</h:panelGroup>
+				</fieldset>
+				
+				<div class="acoes-principais">
+					<h:commandLink value="Cancelar" action="proposta.xhtml" immediate="true" />
+					&#160;
+					<h:commandButton value="Salvar" action="#{propostaEdicaoBean.salva}">
+						<f:ajax render="@form" execute="pnl-proposta" />
+					</h:commandButton>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
