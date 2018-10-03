@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 
 import br.com.triadworks.bugtracker.dao.BugDao;
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
@@ -51,7 +50,6 @@ public class BugBean implements Serializable {
 		return null;
 	}
 	
-	@Transactional
 	public void salva() {
 		if (bug.getId() == null) {
 			this.bugDao.adiciona(bug);

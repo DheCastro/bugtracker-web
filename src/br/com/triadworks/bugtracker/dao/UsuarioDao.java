@@ -9,10 +9,12 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.JPAUtil;
 
+@Transactional
 @Repository
 public class UsuarioDao implements Serializable {
 	

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.annotation.RequestScope;
 
 import br.com.triadworks.bugtracker.dao.UsuarioDao;
@@ -23,7 +22,6 @@ public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	private List<Usuario> usuarios;
 
-	@Transactional
 	public void salva() {
 		if (this.usuario.getId() == null) {
 			dao.adiciona(this.usuario);
@@ -42,7 +40,6 @@ public class UsuarioBean {
 		return this.usuarios;
 	}
 	
-	@Transactional
 	public void remove(Usuario usuario) {
 		dao.remove(usuario);
 		facesUtils.adicionaMensagemDeSucesso("Usuário removido com sucesso!");

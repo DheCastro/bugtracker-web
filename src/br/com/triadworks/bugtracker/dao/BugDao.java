@@ -7,9 +7,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.triadworks.bugtracker.modelo.Bug;
 
+@Transactional
 @Repository
 public class BugDao implements Serializable {
 	
