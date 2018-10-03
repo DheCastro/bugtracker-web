@@ -30,6 +30,16 @@
 					</div>
 				</h:form>
 			</fieldset>
+			
+			<h:panelGroup rendered="#{not empty param.error}">
+				<h:outputScript>
+					window.onload = function() {
+						var message = "#{SPRING_SECURITY_LAST_EXCEPTION.message}";
+						PF('msgCp').renderMessage({"summary"  : message,
+	                             				   "severity" : "error"});
+					}
+				</h:outputScript>
+			</h:panelGroup>
 		</ui:define>
 	</ui:composition>
 </html>
