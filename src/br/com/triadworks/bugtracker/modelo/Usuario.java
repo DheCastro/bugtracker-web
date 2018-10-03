@@ -1,10 +1,12 @@
 package br.com.triadworks.bugtracker.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -15,6 +17,9 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String login;
 	private String senha;
+	
+	@ManyToMany
+	private List<Grupo> grupos;
 	
 	public Integer getId() {
 		return id;
@@ -39,6 +44,12 @@ public class Usuario implements Serializable {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
 	}
 	
 }
