@@ -57,4 +57,18 @@ public class UsuarioDao implements Serializable {
 		}
 	}
 
+	public Usuario buscaPorLogin(String login) {
+		try {
+			return manager
+					.createQuery(
+							"select distinct u from Usuario u "
+									+ "left join fetch u.grupos "
+									+ "where u.login = :login", Usuario.class)
+					.setParameter("login", login)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}		
+	}
+
 }

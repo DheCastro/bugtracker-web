@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-public class Grupo implements Serializable {
+public class Grupo implements GrantedAuthority, Serializable {
 
 	@Id
 	private String nome;
@@ -17,6 +19,11 @@ public class Grupo implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	@Override
+	public String getAuthority() {
+		return nome;
 	}
 	
 }
