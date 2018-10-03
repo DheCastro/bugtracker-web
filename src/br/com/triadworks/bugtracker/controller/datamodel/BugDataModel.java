@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.triadworks.bugtracker.dao.BugDao;
 import br.com.triadworks.bugtracker.modelo.Bug;
-import br.com.triadworks.bugtracker.spring.annotation.ViewScope;
+import br.com.triadworks.bugtracker.spring.scopes.annotation.ViewScope;
 
 @Controller
 @ViewScope // alias para @Scope("view")

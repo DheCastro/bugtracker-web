@@ -1,4 +1,4 @@
-package br.com.triadworks.bugtracker.spring;
+package br.com.triadworks.bugtracker.spring.scopes;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ import org.springframework.beans.factory.config.Scope;
  * 
  * @author rponte
  */
-public class ViewScope implements Scope {
+public class SpringViewScope implements Scope {
 
 	@Override
 	public Object get(String name, ObjectFactory<?> objectFactory) {

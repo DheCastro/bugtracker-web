@@ -15,7 +15,7 @@ import br.com.triadworks.bugtracker.dao.UsuarioDao;
 import br.com.triadworks.bugtracker.modelo.Bug;
 import br.com.triadworks.bugtracker.modelo.Status;
 import br.com.triadworks.bugtracker.modelo.Usuario;
-import br.com.triadworks.bugtracker.spring.annotation.ViewScope;
+import br.com.triadworks.bugtracker.spring.scopes.annotation.ViewScope;
 import br.com.triadworks.bugtracker.util.FacesUtils;
 
 @Controller

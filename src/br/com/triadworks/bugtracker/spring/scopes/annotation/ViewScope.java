@@ -1,4 +1,4 @@
-package br.com.triadworks.bugtracker.spring.annotation;
+package br.com.triadworks.bugtracker.spring.scopes.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
