@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.triadworks.bugtracker.modelo.Grupo;
 import br.com.triadworks.bugtracker.modelo.Usuario;
 import br.com.triadworks.bugtracker.util.JPAUtil;
 
@@ -27,10 +28,15 @@ public class UsuarioDao implements Serializable {
 	}
 
 	public void adiciona(Usuario usuario) {
+		usuario.getGrupos().add(new Grupo("ROLE_USUARIO"));
 		manager.persist(usuario);
 	}
 
 	public void atualiza(Usuario usuario) {
+		// recarrega grupos
+		Usuario usuarioAntigo = busca(usuario.getId());
+		usuario.setGrupos(usuarioAntigo.getGrupos());
+		// atualiza
 		manager.merge(usuario);
 	}
 

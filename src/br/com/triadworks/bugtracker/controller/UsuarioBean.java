@@ -3,6 +3,7 @@ package br.com.triadworks.bugtracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -19,10 +20,18 @@ public class UsuarioBean {
 	@Autowired
 	private FacesUtils facesUtils;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	private Usuario usuario = new Usuario();
 	private List<Usuario> usuarios;
 
 	public void salva() {
+		
+		// criptografa senha
+		String senha = usuario.getSenha();
+		usuario.setSenha(passwordEncoder.encode(senha));
+		
 		if (this.usuario.getId() == null) {
 			dao.adiciona(this.usuario);
 		} else {

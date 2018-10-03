@@ -1,6 +1,7 @@
 package br.com.triadworks.bugtracker.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Usuario implements UserDetails, Serializable  {
 	private String senha;
 	
 	@ManyToMany
-	private List<Grupo> grupos;
+	private List<Grupo> grupos = new ArrayList<>();
 	
 	public Integer getId() {
 		return id;

@@ -13,6 +13,12 @@ public class Grupo implements GrantedAuthority, Serializable {
 	@Id
 	private String nome;
 
+	public Grupo() {}
+
+	public Grupo(String nome) {
+		this.nome = nome;
+	}
+
 	public String getNome() {
 		return nome;
 	}
