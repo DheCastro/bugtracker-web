@@ -5,6 +5,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,6 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/resources/**").permitAll()
 			.antMatchers("/javax.faces.resource/**").permitAll()
+			.antMatchers("/pages/usuarios.xhtml").hasRole("ADMIN")
+			.regexMatchers(HttpMethod.GET, "/pages/bugs.xhtml\\?id=[\\d]+").permitAll()
+			.antMatchers("/pages/bugs.xhtml").hasAnyAuthority("ROLE_ADMIN", "ROLE_USUARIO")
+			.antMatchers("/pages/dashboard.xhtml").permitAll()
 	        .anyRequest().authenticated();
 		
 		// login
