@@ -1,7 +1,11 @@
 package br.com.triadworks.bugtracker.controller;
 
 import java.io.Serializable;
+import java.security.Principal;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -11,21 +15,24 @@ import br.com.triadworks.bugtracker.modelo.Usuario;
 @SessionScope // org.springframework.web.context.annotation.SessionScope
 public class UsuarioWeb implements Serializable {
 
-	private Usuario usuario;
-
 	public void loga(Usuario usuario) {
-		this.usuario = usuario;
+		// faz nada
 	}
 	
 	public void desloga() {
-		this.usuario = null;
+		// faz nada
 	}
 	
 	public boolean isLogado() {
-		return this.usuario != null;
+		return this.getUsuario() != null;
 	}
 	
 	public Usuario getUsuario() {
-		return usuario;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = authentication.getPrincipal();
+		if (principal instanceof UserDetails) {
+			return (Usuario) principal;
+		}
+		return null;
 	}
 }
