@@ -1,13 +1,17 @@
 package br.com.triadworks.bugtracker.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -20,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
         		.userDetailsService(this.users)
-        		.passwordEncoder(new BCryptPasswordEncoder());
+        		.passwordEncoder(passwordEncoder());
     }
 	
 	@Override
@@ -51,4 +55,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 	
+	/**
+	 * Configura internacionalização para Spring Security
+	 */
+	@Bean
+	public MessageSource messageSource() {
+	    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+	    messageSource.addBasenames("classpath:org/springframework/security/messages");
+	    return messageSource;
+	}
+	
+	/**
+	 * Expõe criptografador de senha para uso dentro da app
+	 */
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

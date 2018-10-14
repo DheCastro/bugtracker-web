@@ -20,7 +20,7 @@ public class UsuarioBean {
 	@Autowired
 	private FacesUtils facesUtils;
 	
-//	@Autowired
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	private Usuario usuario = new Usuario();
@@ -28,9 +28,9 @@ public class UsuarioBean {
 
 	public void salva() {
 		
-		// criptografa senha
+		// criptografa senha antes de gravar
 		String senha = usuario.getSenha();
-//		usuario.setSenha(passwordEncoder.encode(senha));
+		usuario.setSenha(passwordEncoder.encode(senha));
 		
 		if (this.usuario.getId() == null) {
 			dao.adiciona(this.usuario);
