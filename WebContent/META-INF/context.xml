@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="BeanManager" 
-        auth="Container"
-        type="javax.enterprise.inject.spi.BeanManager"
-        factory="org.jboss.weld.resources.ManagerObjectFactory" />
+	<!-- Disables Tomcat session persistence -->
+	<!-- https://stackoverflow.com/questions/45494484/prevent-tomcat-from-serializing-session-when-running-locally-from-intellij-ide -->
+	<Manager pathname="" />
 </Context>
